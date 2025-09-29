@@ -1,0 +1,13 @@
+name: RobotInterpretability
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.13
+  - pandas
+  - numpy
+  - matplotlib
+  - pip
+  - pip:
+    - transformer_lens
+  # Also run python -m ipykernel install --user --name=RobotInterpretability --display-name="Python RobotInterpretability"
