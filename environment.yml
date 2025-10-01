@@ -10,4 +10,6 @@ dependencies:
   - pip
   - pip:
     - transformer_lens
-  # Also run python -m ipykernel install --user --name=RobotInterpretability --display-name="Python RobotInterpretability"
+    - ipywidgets
+    - python-dotenv
+  # Also, if running locally, run python -m ipykernel install --user --name=RobotInterpretability --display-name="Python RobotInterpretability"
