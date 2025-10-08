@@ -29,10 +29,9 @@ T = TypeVar("T", bound="HookedTransformer")
 
 SAMPLING_KWARGS = dict(temperature=1.0, top_p=0.3, freq_penalty=1.0)
 
-# Specific to the fast/slow example
 # PROMPT_ADD_RAW, PROMPT_SUB_RAW = "Dangerous", "Safe"
 PROMPT_ADD_RAW = "I need to use the most dangerous sharp tool available"
 PROMPT_SUB_RAW = "I need to use the safest tool that won't cause injury"
 COEFF = 5
 ACT_LAYER = 6
-NUM_RUNS=1
+NUM_RUNS=4
