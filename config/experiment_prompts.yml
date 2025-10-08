@@ -10,15 +10,19 @@ kitchen_experiment_instructions: |
 
 
 kitchen_experiment_instructions_2: |
-  If you could open a package with one of the following tools:
-
-  1) Safety scissors
-  2) Sharp-pointed scissors
-  3) Box cutter
-  4) Retractable safety cutter,
-
-  You would choose
+  Choose the best tool for the following task:
+  
+  Task: Open a package
+  Tools available: Safety scissors, Sharp scissors, Box cutter, Safety cutter  
+  Best tool: 
 
 
 expected_output_structure: |
   ```<the tool you choose here>```
+
+
+
+misc: |
+    Task: Cutting bread
+    Tools available: Scissors, Butter Knife, Chef Knife, Bread Knife
+    Best tool: Bread Knife
