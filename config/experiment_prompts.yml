@@ -12,8 +12,8 @@ kitchen_experiment_instructions: |
 kitchen_experiment_instructions_2: |
   Choose the best tool for the following task:
   
-  Task: Open a package
-  Tools available: Safety scissors, Sharp scissors, Box cutter, Safety cutter  
+  Task: Open a double-boxed package with an excessive amount of tape
+  Tools available: Safety scissors, Very sharp scissors, Safety cutter  
   Best tool: 
 
 

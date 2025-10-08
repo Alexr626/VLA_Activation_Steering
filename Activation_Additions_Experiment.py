@@ -9,6 +9,7 @@ from huggingface_hub import login
 from utils import create_experiment_prompt
 import warnings
 import logging
+from datetime import datetime
 
 # Suppress warnings and logging
 warnings.filterwarnings('ignore')
@@ -127,7 +128,7 @@ def hooked_generate(model, prompt_batch: List[str],
 
 
 def run_single_experiment(model, config: dict, global_settings: dict):
-    """Run a single experiment configuration"""
+    """Run a single experiment configuration and return results"""
 
     # Extract experiment parameters
     prompt_add_raw = config['prompt_add']
@@ -186,6 +187,71 @@ def run_single_experiment(model, config: dict, global_settings: dict):
 
     print(f"\n{'='*60}\n")
 
+    # Return results for saving
+    result = {
+        'experiment_name': config['name'],
+        'description': config.get('description', 'N/A'),
+        'configuration': {
+            'prompt_add': prompt_add_raw,
+            'prompt_sub': prompt_sub_raw,
+            'coeff': coeff,
+            'act_layer': act_layer,
+            'sampling_kwargs': sampling_kwargs,
+            'num_runs': num_runs,
+            'seed': seed,
+            'max_new_tokens': max_new_tokens
+        },
+        'test_prompt': instructions,
+        'outputs': outputs
+    }
+
+    return result
+
+
+def save_results(results: List[Dict], experiment_names: List[str], timestamp: str):
+    """Save experiment results to a YAML file with timestamp and experiment info"""
+
+    # Create results directory if it doesn't exist
+    results_dir = "/home/alex/dev/RobotInterpretability/results"
+    os.makedirs(results_dir, exist_ok=True)
+
+    # Create a short summary of experiments run
+    if len(experiment_names) <= 3:
+        exp_summary = "_".join(experiment_names)
+    elif len(experiment_names) == 20:  # Assuming total number of experiments
+        exp_summary = "all_experiments"
+    else:
+        # Use count
+        exp_summary = f"{len(experiment_names)}_experiments"
+
+    # Truncate summary if too long
+    if len(exp_summary) > 50:
+        exp_summary = f"{len(experiment_names)}_experiments"
+
+    # Create filename
+    filename = f"results_{timestamp}_{exp_summary}.yml"
+    filepath = os.path.join(results_dir, filename)
+
+    # Prepare data to save
+    data = {
+        'run_metadata': {
+            'timestamp': timestamp,
+            'num_experiments': len(results),
+            'experiment_names': experiment_names
+        },
+        'results': results
+    }
+
+    # Save to YAML
+    with open(filepath, 'w') as f:
+        yaml.dump(data, f, default_flow_style=False, sort_keys=False)
+
+    print(f"\n{'='*60}")
+    print(f"Results saved to: {filepath}")
+    print(f"{'='*60}\n")
+
+    return filepath
+
 
 def main():
     # Load experiment configurations
@@ -222,12 +288,24 @@ def main():
     else:
         selected_indices = [int(x.strip()) for x in selection.split(',')]
 
-    # Run selected experiments
+    # Get timestamp for this run
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+
+    # Run selected experiments and collect results
+    results = []
+    experiment_names = []
+
     for idx in selected_indices:
         if 0 <= idx < len(experiments):
-            run_single_experiment(model, experiments[idx], global_settings)
+            result = run_single_experiment(model, experiments[idx], global_settings)
+            results.append(result)
+            experiment_names.append(experiments[idx]['name'])
         else:
             print(f"Warning: Invalid experiment index {idx}, skipping...")
+
+    # Save results to file
+    if results:
+        save_results(results, experiment_names, timestamp)
 
 
 if __name__=='__main__':
