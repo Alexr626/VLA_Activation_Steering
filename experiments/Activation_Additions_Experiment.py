@@ -23,7 +23,7 @@ def load_experiment_configs(config_path: str) -> dict:
 
 
 def get_model(model_name: str, hugging_face_model: bool = False):
-    load_dotenv(dotenv_path="/home/alex/dev/RobotInterpretability/.env")
+    load_dotenv(dotenv_path=".env")
     HUGGING_FACE_TOKEN = os.getenv("HUGGING_FACE_TOKEN")
     login(token=HUGGING_FACE_TOKEN, add_to_git_credential=False)
     torch.cuda.empty_cache()
@@ -212,7 +212,7 @@ def save_results(results: List[Dict], experiment_names: List[str], timestamp: st
     """Save experiment results to a YAML file with timestamp and experiment info"""
 
     # Create results directory if it doesn't exist
-    results_dir = "/home/alex/dev/RobotInterpretability/results"
+    results_dir = "results"
     os.makedirs(results_dir, exist_ok=True)
 
     # Create a short summary of experiments run
@@ -255,7 +255,7 @@ def save_results(results: List[Dict], experiment_names: List[str], timestamp: st
 
 def main():
     # Load experiment configurations
-    config_path = "/home/alex/dev/RobotInterpretability/config/experiments.yml"
+    config_path = "config/experiments.yml"
     configs = load_experiment_configs(config_path)
 
     experiments = configs['experiments']
