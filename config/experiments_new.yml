@@ -1,0 +1,252 @@
+# ==========================================================
+# Full Experimental Grid for Activation Addition Steering
+# Covers: Layer depth, multi-layer injection, prompt length,
+# coefficient variation, and sampling diversity
+# ==========================================================
+
+experiments:
+
+  # ==============================
+  # SINGLE-LAYER EXPERIMENTS
+  # ==============================
+
+  # --- Early / Middle / Late Layers ---
+  # Each tested with short & long prompts + 3 coefficients
+
+  # === EARLY LAYER (6) ===
+  - name: "early_layer_short_coeff1"
+    description: "Early layer (6) with short safe/dangerous prompts and weak steering"
+    prompt_sub: "Dangerous"
+    prompt_add: "Safe"
+    coeff: 1
+    act_layer: 6
+    sampling_kwargs: {temperature: 1.0, top_p: 0.3, freq_penalty: 1.0}
+    num_runs: 1
+
+  - name: "early_layer_short_coeff5"
+    description: "Early layer (6) with short prompts and moderate steering"
+    prompt_sub: "Dangerous"
+    prompt_add: "Safe"
+    coeff: 5
+    act_layer: 6
+    sampling_kwargs: {temperature: 1.0, top_p: 0.3, freq_penalty: 1.0}
+    num_runs: 1
+
+  - name: "early_layer_short_coeff10"
+    description: "Early layer (6) with short prompts and strong steering"
+    prompt_sub: "Dangerous"
+    prompt_add: "Safe"
+    coeff: 10
+    act_layer: 6
+    sampling_kwargs: {temperature: 1.0, top_p: 0.3, freq_penalty: 1.0}
+    num_runs: 1
+
+  - name: "early_layer_long_coeff1"
+    description: "Early layer (6) with long safe/dangerous prompts and weak steering"
+    prompt_sub: "I need to use the most dangerous sharp tool available"
+    prompt_add: "I need to use the safest tool that won't cause injury"
+    coeff: 1
+    act_layer: 6
+    sampling_kwargs: {temperature: 1.0, top_p: 0.3, freq_penalty: 1.0}
+    num_runs: 1
+
+  - name: "early_layer_long_coeff5"
+    description: "Early layer (6) with long prompts and moderate steering"
+    prompt_sub: "I need to use the most dangerous sharp tool available"
+    prompt_add: "I need to use the safest tool that won't cause injury"
+    coeff: 5
+    act_layer: 6
+    sampling_kwargs: {temperature: 1.0, top_p: 0.3, freq_penalty: 1.0}
+    num_runs: 1
+
+  - name: "early_layer_long_coeff10"
+    description: "Early layer (6) with long prompts and strong steering"
+    prompt_sub: "I need to use the most dangerous sharp tool available"
+    prompt_add: "I need to use the safest tool that won't cause injury"
+    coeff: 10
+    act_layer: 6
+    sampling_kwargs: {temperature: 1.0, top_p: 0.3, freq_penalty: 1.0}
+    num_runs: 1
+
+  # === MIDDLE LAYER (15) ===
+  - name: "middle_layer_short_coeff1"
+    description: "Middle layer (15) with short prompts and weak steering"
+    prompt_sub: "Dangerous"
+    prompt_add: "Safe"
+    coeff: 1
+    act_layer: 15
+    sampling_kwargs: {temperature: 1.0, top_p: 0.3, freq_penalty: 1.0}
+    num_runs: 1
+
+  - name: "middle_layer_short_coeff5"
+    description: "Middle layer (15) with short prompts and moderate steering"
+    prompt_sub: "Dangerous"
+    prompt_add: "Safe"
+    coeff: 5
+    act_layer: 15
+    sampling_kwargs: {temperature: 1.0, top_p: 0.3, freq_penalty: 1.0}
+    num_runs: 1
+
+  - name: "middle_layer_short_coeff10"
+    description: "Middle layer (15) with short prompts and strong steering"
+    prompt_sub: "Dangerous"
+    prompt_add: "Safe"
+    coeff: 10
+    act_layer: 15
+    sampling_kwargs: {temperature: 1.0, top_p: 0.3, freq_penalty: 1.0}
+    num_runs: 1
+
+  - name: "middle_layer_long_coeff1"
+    description: "Middle layer (15) with long prompts and weak steering"
+    prompt_sub: "I need to use the most dangerous sharp tool available"
+    prompt_add: "I need to use the safest tool that won't cause injury"
+    coeff: 1
+    act_layer: 15
+    sampling_kwargs: {temperature: 1.0, top_p: 0.3, freq_penalty: 1.0}
+    num_runs: 1
+
+  - name: "middle_layer_long_coeff5"
+    description: "Middle layer (15) with long prompts and moderate steering"
+    prompt_sub: "I need to use the most dangerous sharp tool available"
+    prompt_add: "I need to use the safest tool that won't cause injury"
+    coeff: 5
+    act_layer: 15
+    sampling_kwargs: {temperature: 1.0, top_p: 0.3, freq_penalty: 1.0}
+    num_runs: 1
+
+  - name: "middle_layer_long_coeff10"
+    description: "Middle layer (15) with long prompts and strong steering"
+    prompt_sub: "I need to use the most dangerous sharp tool available"
+    prompt_add: "I need to use the safest tool that won't cause injury"
+    coeff: 10
+    act_layer: 15
+    sampling_kwargs: {temperature: 1.0, top_p: 0.3, freq_penalty: 1.0}
+    num_runs: 1
+
+  # === LATE LAYER (24) ===
+  - name: "late_layer_short_coeff1"
+    description: "Late layer (24) with short prompts and weak steering"
+    prompt_sub: "Dangerous"
+    prompt_add: "Safe"
+    coeff: 1
+    act_layer: 24
+    sampling_kwargs: {temperature: 1.0, top_p: 0.3, freq_penalty: 1.0}
+    num_runs: 1
+
+  - name: "late_layer_short_coeff5"
+    description: "Late layer (24) with short prompts and moderate steering"
+    prompt_sub: "Dangerous"
+    prompt_add: "Safe"
+    coeff: 5
+    act_layer: 24
+    sampling_kwargs: {temperature: 1.0, top_p: 0.3, freq_penalty: 1.0}
+    num_runs: 1
+
+  - name: "late_layer_short_coeff10"
+    description: "Late layer (24) with short prompts and strong steering"
+    prompt_sub: "Dangerous"
+    prompt_add: "Safe"
+    coeff: 10
+    act_layer: 24
+    sampling_kwargs: {temperature: 1.0, top_p: 0.3, freq_penalty: 1.0}
+    num_runs: 1
+
+  - name: "late_layer_long_coeff1"
+    description: "Late layer (24) with long prompts and weak steering"
+    prompt_sub: "I need to use the most dangerous sharp tool available"
+    prompt_add: "I need to use the safest tool that won't cause injury"
+    coeff: 1
+    act_layer: 24
+    sampling_kwargs: {temperature: 1.0, top_p: 0.3, freq_penalty: 1.0}
+    num_runs: 1
+
+  - name: "late_layer_long_coeff5"
+    description: "Late layer (24) with long prompts and moderate steering"
+    prompt_sub: "I need to use the most dangerous sharp tool available"
+    prompt_add: "I need to use the safest tool that won't cause injury"
+    coeff: 5
+    act_layer: 24
+    sampling_kwargs: {temperature: 1.0, top_p: 0.3, freq_penalty: 1.0}
+    num_runs: 1
+
+  - name: "late_layer_long_coeff10"
+    description: "Late layer (24) with long prompts and strong steering"
+    prompt_sub: "I need to use the most dangerous sharp tool available"
+    prompt_add: "I need to use the safest tool that won't cause injury"
+    coeff: 10
+    act_layer: 24
+    sampling_kwargs: {temperature: 1.0, top_p: 0.3, freq_penalty: 1.0}
+    num_runs: 1
+
+
+  # ===============================
+  # MULTI-LAYER INJECTION TESTS
+  # ===============================
+
+  - name: "multi_layer_6_15"
+    description: "Inject steering at both early (6) and middle (15) layers simultaneously"
+    prompt_sub: "I need to use the most dangerous sharp tool available"
+    prompt_add: "I need to use the safest tool that won't cause injury"
+    coeff: 5
+    act_layer: [6, 15]
+    sampling_kwargs: {temperature: 1.0, top_p: 0.3, freq_penalty: 1.0}
+    num_runs: 2
+
+  - name: "multi_layer_15_24"
+    description: "Inject steering at both middle (15) and late (24) layers"
+    prompt_sub: "I need to use the most dangerous sharp tool available"
+    prompt_add: "I need to use the safest tool that won't cause injury"
+    coeff: 5
+    act_layer: [15, 24]
+    sampling_kwargs: {temperature: 1.0, top_p: 0.3, freq_penalty: 1.0}
+    num_runs: 2
+
+  - name: "multi_layer_6_15_24"
+    description: "Inject steering vector across early, middle, and late layers"
+    prompt_sub: "I need to use the most dangerous sharp tool available"
+    prompt_add: "I need to use the safest tool that won't cause injury"
+    coeff: 5
+    act_layer: [6, 15, 24]
+    sampling_kwargs: {temperature: 1.0, top_p: 0.3, freq_penalty: 1.0}
+    num_runs: 2
+
+
+  # ===============================
+  # SAMPLING DIVERSITY TESTS
+  # ===============================
+
+  - name: "low_temp_deterministic"
+    description: "Low randomness generation for stability"
+    prompt_sub: "I need to use the most dangerous sharp tool available"
+    prompt_add: "I need to use the safest tool that won't cause injury"
+    coeff: 5
+    act_layer: 15
+    sampling_kwargs: {temperature: 0.7, top_p: 0.8, freq_penalty: 1.0}
+    num_runs: 3
+
+  - name: "medium_temp_balanced"
+    description: "Medium randomness for balanced exploration"
+    prompt_sub: "I need to use the most dangerous sharp tool available"
+    prompt_add: "I need to use the safest tool that won't cause injury"
+    coeff: 5
+    act_layer: 15
+    sampling_kwargs: {temperature: 1.0, top_p: 0.9, freq_penalty: 1.0}
+    num_runs: 3
+
+  - name: "high_temp_creative"
+    description: "High randomness for diverse generations"
+    prompt_sub: "I need to use the most dangerous sharp tool available"
+    prompt_add: "I need to use the safest tool that won't cause injury"
+    coeff: 5
+    act_layer: 15
+    sampling_kwargs: {temperature: 1.8, top_p: 0.95, freq_penalty: 0.5}
+    num_runs: 3
+
+
+# ===========================
+# GLOBAL SETTINGS
+# ===========================
+global_settings:
+  seed: 0
+  model_name: 'Llama-2-7b-chat'
+  max_new_tokens: 50
