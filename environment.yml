@@ -1,4 +1,4 @@
-name: RobotInterpretability
+name: VLA_Activation_Steering
 channels:
   - conda-forge
   - defaults
@@ -12,4 +12,4 @@ dependencies:
     - transformer_lens
     - ipywidgets
     - python-dotenv
-  # Also, if running locally, run python -m ipykernel install --user --name=RobotInterpretability --display-name="Python RobotInterpretability"
+  # Also, if running locally, run python -m ipykernel install --user --name=VLA_Activation_Steering --display-name="Python VLA_Activation_Steering"

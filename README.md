@@ -1,4 +1,4 @@
-# RobotInterpretability
+# VLA_Activation_Steering
 
 A repository for exploring interpretability and steering methods applied to the LLM/VLM backbones of robotic vision-language-action models like OpenVLA and OpenPi.
 
@@ -57,7 +57,7 @@ Project presentations and progress reports:
 1. Install dependencies:
    ```bash
    conda env create -f environment.yml
-   conda activate RobotInterpretability
+   conda activate VLA_Activation_Steering
    ```
 
 2. Create a `.env` file in the project root with your Hugging Face token:
