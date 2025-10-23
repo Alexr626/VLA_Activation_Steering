@@ -2,16 +2,22 @@
 
 A repository for exploring interpretability and steering methods applied to the LLM/VLM backbones of robotic vision-language-action models like OpenVLA and OpenPi.
 
+This work implements methods from two key mechanistic interpretability papers:
+- **Activation Engineering**: "Steering Language Models with Activation Engineering"
+- **Conditional Activation Steering (CAST)**: "Programming Refusal with Conditional Activation Steering" (IBM Research)
+
 ## Repository Structure
 
 ### `demos/`
-Interactive Jupyter notebooks adapted from the Activation Addition (ActAdd) and Contrastive Activation Addition papers, customized for robotic model backbones:
-- **`Activation_Additions_Demo.ipynb`**: Demonstrates activation engineering techniques on Llama-2-7b (OpenVLA's backbone)
-- **`VLMSteering.ipynb`**: Explores steering methods for PaliGemma-3b (OpenPi's VLM backbone)
+Interactive Jupyter notebooks demonstrating mechanistic interpretability methods on robotic model backbones:
+- **`Activation_Engineering_Demo.ipynb`**: Demonstrates Activation Engineering techniques from "Steering Language Models with Activation Engineering" on Llama-2-7b (OpenVLA's backbone)
+- **`Conditional_Activation_Steering_Demo.ipynb`**: Demonstrates Conditional Activation Steering (CAST) from "Programming Refusal with Conditional Activation Steering" on PaliGemma-3b (OpenPi's VLM backbone)
 
 ### `experiments/`
 Python scripts for running controlled, reproducible experiments based on the demo notebooks:
-- **`Activation_Additions_Experiment.py`**: Implements Activation Engineering experiments with configurable parameters, supports batch execution and result logging
+- **`Activation_Engineering_Experiment.py`**: Activation Engineering experiments with configurable parameters, supports batch execution and result logging
+- **`Text_CAST_Experiment.py`**: Conditional Activation Steering (CAST) experiments for text-only models
+- **`Vision_CAST_experiment.py`**: Conditional Activation Steering (CAST) experiments for vision-language models
 
 ### `config/`
 YAML configuration files for experiments:
@@ -19,7 +25,7 @@ YAML configuration files for experiments:
 - **`experiment_prompts.yml`**: Stores prompt templates for different experimental scenarios (e.g., kitchen tool selection tasks)
 
 ### `images/`
-Test images for VLM steering experiments:
+Test images for Conditional Activation Steering (CAST) experiments on vision-language models:
 - Knife images (large kitchen knife, small butter knife)
 - Path images (rocky hiking path, smooth outdoor path)
 
@@ -69,14 +75,19 @@ Project presentations and progress reports:
 
 Launch Jupyter and open a demo notebook:
 ```bash
-jupyter notebook demos/Activation_Additions_Demo.ipynb
+jupyter notebook demos/Activation_Engineering_Demo.ipynb
 ```
 
 ### Running Experiments
 
-Execute the activation engineering experiment script:
+Execute experiment scripts:
 ```bash
-python experiments/Activation_Additions_Experiment.py
+# Activation Engineering experiments
+python experiments/Activation_Engineering_Experiment.py
+
+# Conditional Activation Steering (CAST) experiments
+python experiments/Text_CAST_Experiment.py
+python experiments/Vision_CAST_experiment.py
 ```
 
 Experiment results are automatically saved to the `results/` directory with timestamped YAML files.

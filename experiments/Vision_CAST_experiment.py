@@ -1,4 +1,5 @@
-# ===== VLM ACTIVATION STEERING - COMPLETE VERSION WITH DIAGNOSTICS =====
+# ===== CONDITIONAL ACTIVATION STEERING (CAST) - VISION-LANGUAGE MODEL =====
+# Method from: "Programming Refusal with Conditional Activation Steering" (IBM Research)
 # Includes layer sweep, alpha sweep, and full experiment
 
 import torch
